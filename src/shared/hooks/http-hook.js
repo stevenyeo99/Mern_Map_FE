@@ -8,6 +8,8 @@ export const useHttpClient = () => {
 
     const sendRequest = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
         try {
+            setIsLoading(true);
+
             const httpAbortCtrl = new AbortController();
             activeHttpRequest.current.push(httpAbortCtrl);
 
