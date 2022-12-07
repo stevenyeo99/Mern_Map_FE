@@ -49,7 +49,7 @@ const Auth = props => {
 
                 console.log(responseData);
 
-                authCtx.login(responseData.user.id);
+                authCtx.login(responseData.userId, responseData.token);
             } catch (err) {
                 console.log(err);
             }
@@ -67,7 +67,7 @@ const Auth = props => {
                 );
 
                 console.log(responseData);
-                authCtx.login(responseData.user.id);
+                authCtx.login(responseData.userId, responseData.token);
             } catch (err) {
                 console.log(err.message);
             }

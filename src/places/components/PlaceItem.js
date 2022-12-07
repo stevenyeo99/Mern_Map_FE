@@ -30,7 +30,7 @@ const PlaceItem = props => {
     const confirmDeleteWarningHandler = async () => {
         try {
             await sendRequest(`http://localhost:5000/api/places/${props.id}`, 'DELETE', null, {
-                'Content-Type': 'application/json'
+                Authorization: 'Bearer ' + authCtx.token
             });
 
             props.onDelete(props.id);

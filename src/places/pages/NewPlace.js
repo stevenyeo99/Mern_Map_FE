@@ -46,9 +46,10 @@ const NewPlace = () => {
             formData.append('title', formState.inputs.title.value);
             formData.append('description', formState.inputs.description.value);
             formData.append('address', formState.inputs.address.value);
-            formData.append('creator', authCtx.userId);
             formData.append('image', formState.inputs.image.value);
-            const responseData = await sendRequest('http://localhost:5000/api/places', 'POST', formData);
+            const responseData = await sendRequest('http://localhost:5000/api/places', 'POST', formData, {
+                Authorization: 'Bearer ' + authCtx.token
+            });
 
             console.log(responseData);
 

@@ -39,7 +39,8 @@ const UpdatePlace = () => {
         try {
             const fetchPlace = async () => {
                 const responseData = await sendRequest(`http://localhost:5000/api/places/${placeId}`, 'GET', null, {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + authCtx.token
                 });
 
                 const { place } = responseData;
@@ -68,7 +69,7 @@ const UpdatePlace = () => {
         } catch (err) {
             console.log(err);
         }
-    }, [sendRequest, setFormData, placeId]);
+    }, [sendRequest, setFormData, placeId, setIsPlaceExist]);
 
     if (!isPlaceExist && !error) {
         return (
@@ -89,7 +90,8 @@ const UpdatePlace = () => {
                 description: formState.inputs.description.value,
                 address: formState.inputs.address.value
             }), {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + authCtx.token
             });
 
             history.push(`/${authCtx.userId}/places`);
