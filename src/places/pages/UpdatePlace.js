@@ -38,7 +38,7 @@ const UpdatePlace = () => {
     useEffect(() => {
         try {
             const fetchPlace = async () => {
-                const responseData = await sendRequest(`http://localhost:5000/api/places/${placeId}`, 'GET', null, {
+                const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/places/${placeId}`, 'GET', null, {
                     'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + authCtx.token
                 });
@@ -85,7 +85,7 @@ const UpdatePlace = () => {
         event.preventDefault();
 
         try {
-            await sendRequest(`http://localhost:5000/api/places/${placeId}`, 'PATCH', JSON.stringify({
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/places/${placeId}`, 'PATCH', JSON.stringify({
                 title: formState.inputs.title.value,
                 description: formState.inputs.description.value,
                 address: formState.inputs.address.value

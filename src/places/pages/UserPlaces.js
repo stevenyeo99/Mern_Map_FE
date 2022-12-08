@@ -16,7 +16,7 @@ const UserPlaces = props => {
     useEffect(() => {
         try {
             const fetchPlaces = async () => {
-                const responseData = await sendRequest(`http://localhost:5000/api/places/user/${userId}`, 'GET', null, {
+                const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/places/user/${userId}`, 'GET', null, {
                     'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + authCtx.token
                 });
